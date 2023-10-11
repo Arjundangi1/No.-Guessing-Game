@@ -11,7 +11,6 @@ const p = document.createElement('p')
 
 let prevGuess = []
 let numguess = 1 
- 
 let playGame = true;
 
 
@@ -26,17 +25,17 @@ if(playGame){
 
 function validatedGuess(guess){
  if (isNaN(guess)){
-    alert('enter a valid no')}
+    alert('Please Enter a valid no')}
  else if(guess<1){
-     alert('enter a no more than 10')
+     alert('Please Enter a no more than 10')
  }
  else if(guess > 100){
-    alert('enter a no less than 100')
+    alert('Please Enter a no less than 100')
  }else{
     prevGuess.push(guess)
     if(numguess >10){
         displayGuesses(guess);
-        displayMessage(`Game over . The random no was ${random}`);
+        displayMessage(`Game over. The random no was ${random}`);
         endGame()
     }else{
         displayGuesses(guess);
@@ -48,12 +47,12 @@ function validatedGuess(guess){
 
 function checkGuess(guesses){
     if(guesses === random){
-        displayMessage("you guessed it correct")
+        displayMessage("Wow! You guessed it correct")
         endGame()
     }else if(guesses<random){
-        displayMessage("no is too low")
+        displayMessage("Ohh! it's too low")
     }else{
-        displayMessage('no is too high')
+        displayMessage("Yup! it's too high")
     }
 
 }
@@ -71,7 +70,7 @@ function checkGuess(guesses){
     userinput.value ="";
     userinput.setAttribute('disabled','')
     p.classList.add('button')
-    p.innerHTML = '<h2 id = "newGame">Start a new game</h2>';
+    p.innerHTML = '<button id = "newGame">Start a new game</button>';
     startover.appendChild(p);
     playGame = false
     startGame()
@@ -84,6 +83,7 @@ prevGuess = [];
 numguess = 1
 guessSlot.innerHTML = ''
 remaining.innerHTML = `${11-numguess}`
+lowOrHi.innerHTML = ''
 userinput.removeAttribute('disabled')
 startover.removeChild(p)
 playGame = true;
